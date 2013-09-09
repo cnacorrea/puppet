@@ -10,7 +10,7 @@ class repos::rpmforge {
 	}
 
 	exec { 'rpmforge-install':
-		command     => 'rpm --import /tmp/RPM-GPG-KEY.dag.txt && yum localinstall /tmp/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm',
+		command     => 'rpm --import /tmp/RPM-GPG-KEY.dag.txt && yum -y localinstall /tmp/rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm',
 		cwd         => "/tmp",
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		refreshonly => true,
