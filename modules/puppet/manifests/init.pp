@@ -17,8 +17,9 @@ class puppet {
 	}
 
 	user { 'confman':
-		comment  => 'Configuration Management user',
-		home     => "${puppet::params::confdir}",
+		comment => 'Configuration Management user',
+		home    => "${puppet::params::confdir}",
+		groups  => [ $puppet::params::sudogroup ],
 	}
 
 	ssh_authorized_key { 'confman-mbp':
@@ -31,12 +32,18 @@ class puppet {
 	}
 
 	file { "${puppet::params::confdir}":
-		ensure => "directory",
+		ensure  => "directory",
+		owner   => 'confman',
+		group   => 'confman',
+		recurse => true,
 	}
 
 	file { "${puppet::params::confdir}/.ssh":
 		ensure  => "directory",
 		require => File["${puppet::params::confdir}"],
+		owner   => 'confman',
+		group   => 'confman',
+		recurse => true,
 	}
 
 	file { "${puppet::params::confdir}/.ssh/id_rsa":
