@@ -8,8 +8,8 @@ task :apply do
 	sh "#{SSH} #{client} pull-updates"
 end
 
-desc "Bootstrap Puppet on ENV['CLIENT'] with hostname ENV['HOSTNAME']"
-task :bootstrap do
+desc "Bootstrap **Ubuntu** Puppet on ENV['CLIENT'] with hostname ENV['HOSTNAME']"
+task :ubustrap do
 	client = ENV['CLIENT']
 	hostname = ENV['HOSTNAME'] || client
 	commands = <<BOOTSTRAP
@@ -19,7 +19,23 @@ sudo cp -f ~/hostname /etc/hostname && \
 wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb && \
 sudo dpkg -i puppetlabs-release-precise.deb && \
 sudo apt-get update && sudo apt-get -y install git puppet && \
+mkdir -p ~/.ssh && \
 echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
+git clone #{REPO} puppet && \
+sudo puppet apply --modulepath=/home/confman/puppet/modules /home/confman/puppet/manifests/site.pp
+BOOTSTRAP
+	sh "#{SSH} #{client} '#{commands}'"
+end
+
+desc "Bootstrap **CentOS** Puppet on ENV['CLIENT']"
+task :centstrap do
+	client = ENV['CLIENT']
+	commands = <<BOOTSTRAP
+sudo rpm -ivh --force http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm && \
+sudo yum update && sudo yum -y install git puppet && \
+mkdir -p ~/.ssh && \
+echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
+chmod 0600 ~/.ssh/config && \
 git clone #{REPO} puppet && \
 sudo puppet apply --modulepath=/home/confman/puppet/modules /home/confman/puppet/manifests/site.pp
 BOOTSTRAP
