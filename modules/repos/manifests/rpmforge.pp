@@ -3,12 +3,10 @@ class repos::rpmforge {
 		cwd     => "/tmp",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		creates => "/tmp/rpmforge.rpm",
-		notify  => Exec["rpm -i rpmforge.rpm"],
 	}
 
-	exec { 'rpm -i rpmforge.rpm':
+	exec { 'rpm -ivh --force /tmp/rpmforge.rpm':
 		cwd         => "/tmp",
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
-		refreshonly => true,
 	}
 }
