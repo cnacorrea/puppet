@@ -17,3 +17,8 @@ node 'ubuntuvm' {
 		content => "Hello, world\n",
 	}
 }
+
+node 'otrs' {
+	include puppet
+	include repos::rpmforge
+}
