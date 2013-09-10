@@ -49,7 +49,7 @@ define add_user($name, $shell, $sshkeytype, $sshkey) {
 		require => User["${username}"],
 		owner   => $username,
 		group   => $username,
-		recurse => true,
+		recurse => false,
 	}
 
 	file { "/home/${username}/.ssh":
