@@ -21,3 +21,4 @@ node 'ubuntuvm' {
 node 'otrs' {
 	include puppet
 	include repos::rpmforge
+}

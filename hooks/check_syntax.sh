@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 
 syntax_errors=0
 error_msg=$(mktemp /tmp/error_msg.XXXXXX)
@@ -18,13 +18,14 @@ do
 	if [ `git cat-file -s :0:$indexfile` -gt 0 ]
 	then
 		case $indexfile in
-*.pp )
-                # Check puppet manifest syntax
-                git cat-file blob :0:$indexfile | puppet parser validate > $error_msg ;;
-*.erb )
-                # Check ERB template syntax
-                git cat-file blob :0:$indexfile | erb -x -T - | ruby -c 2> $error_msg > /dev/null ;;
+		*.pp )
+			# Check puppet manifest syntax
+			git cat-file blob :0:$indexfile | puppet parser validate > $error_msg ;;
+		*.erb )
+			# Check ERB template syntax
+			git cat-file blob :0:$indexfile | erb -x -T - | ruby -c 2> $error_msg > /dev/null ;;
 		esac
+
 		if [ "$?" -ne 0 ]
 		then
 			echo -n "$indexfile: "
