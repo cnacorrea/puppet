@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -x
 
 syntax_errors=0
 error_msg=$(mktemp /tmp/error_msg.XXXXXX)
