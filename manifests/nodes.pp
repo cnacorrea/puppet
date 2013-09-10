@@ -2,23 +2,16 @@ node default {
 	include puppet
 }
 
-node 'billmbp' {
+node 'billmbp' inherits default {
 	include puppet
-
-	file { '/tmp/hello':
-		content => "Hello, world\n",
-	}
 }
 
-node 'ubuntuvm' {
+node 'ubuntuvm' inherits default {
 	include puppet
-
-	file { '/tmp/hello':
-		content => "Hello, world\n",
-	}
+	include accounts
 }
 
-node 'otrs' {
+node 'otrs' inherits default {
 	include puppet
 	include repos::rpmforge
 }
