@@ -7,7 +7,7 @@ class accounts {
 	}
 }
 
-define add_user($name, $uid, $password, $shell, $groups, $sshkeytype, $sshkey) {
+define add_user($name, $shell, $sshkeytype, $sshkey) {
 	$username = $title
 
 	user { $username:
