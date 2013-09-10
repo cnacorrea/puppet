@@ -27,12 +27,27 @@ BOOTSTRAP
 	sh "#{SSH} #{client} '#{commands}'"
 end
 
-desc "Bootstrap **CentOS** Puppet on ENV['CLIENT']"
-task :centstrap do
+desc "Bootstrap **CentOS 6** Puppet on ENV['CLIENT']"
+task :el6strap do
 	client = ENV['CLIENT']
 	commands = <<BOOTSTRAP
 sudo rpm -ivh --force http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm && \
-sudo yum update && sudo yum -y install git puppet && \
+sudo yum -y update && sudo yum -y install git puppet && \
+mkdir -p ~/.ssh && \
+echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
+chmod 0600 ~/.ssh/config && \
+git clone #{REPO} puppet && \
+sudo puppet apply --modulepath=/home/confman/puppet/modules /home/confman/puppet/manifests/site.pp
+BOOTSTRAP
+	sh "#{SSH} #{client} '#{commands}'"
+end
+
+desc "Bootstrap **CentOS 5** Puppet on ENV['CLIENT']"
+task :el5strap do
+	client = ENV['CLIENT']
+	commands = <<BOOTSTRAP
+sudo rpm -ivh --force --nodeps http://yum.puppetlabs.com/el/5/products/i386/puppetlabs-release-5-7.noarch.rpm && \
+sudo yum -y --skip-broken update && sudo yum -y install git puppet && \
 mkdir -p ~/.ssh && \
 echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
 chmod 0600 ~/.ssh/config && \
