@@ -1,17 +1,12 @@
 node default {
 	include puppet
-}
-
-node 'billmbp' inherits default {
-	include puppet
-}
-
-node 'ubuntuvm' inherits default {
-	include puppet
 	include accounts
 }
 
-node 'otrs' inherits default {
+node 'billmbp' {
 	include puppet
+}
+
+node 'otrs' inherits default {
 	include repos::rpmforge
 }
