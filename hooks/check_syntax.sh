@@ -18,10 +18,10 @@ do
 	if [ `git cat-file -s :0:$indexfile` -gt 0 ]
 	then
 		case $indexfile in
-		*.pp )
+*.pp )
                 # Check puppet manifest syntax
                 git cat-file blob :0:$indexfile | puppet parser validate > $error_msg ;;
-		*.erb )
+*.erb )
                 # Check ERB template syntax
                 git cat-file blob :0:$indexfile | erb -x -T - | ruby -c 2> $error_msg > /dev/null ;;
 		esac
