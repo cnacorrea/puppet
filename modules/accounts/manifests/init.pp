@@ -16,6 +16,22 @@ define add_user($name, $shell, $sshkeytype, $sshkey) {
 		shell   => "$shell",
 	}
 
+	file { "/home/${username}":
+		ensure  => "directory",
+		require => User["${username}"],
+		owner   => $username,
+		group   => $username,
+		recurse => true,
+	}
+
+	file { "/home/${username}/.ssh":
+		ensure  => "directory",
+		require => File["/home/${username}"],
+		owner   => $username,
+		group   => $username,
+		recurse => true,
+	}
+
 	if $sshkeytype != 'none' {
 		ssh_authorized_key{ $username:
 			user   => "$username",
