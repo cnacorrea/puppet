@@ -58,5 +58,6 @@ class puppet {
 		command => '/usr/local/bin/pull-updates',
 		minute  => '*/10',
 		hour    => '*',
+		user    => 'confman',
 	}
 }
