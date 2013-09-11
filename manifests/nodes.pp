@@ -1,6 +1,7 @@
 node default {
 	include puppet
-	include accounts
+	include user::virtual
+	include user::redes-unimed
 }
 
 node 'billmbp' {
