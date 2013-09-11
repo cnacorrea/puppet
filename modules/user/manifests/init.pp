@@ -6,6 +6,8 @@ class user::redes-unimed {
 	realize(Add_user['fed3'])
 	realize(Add_user['fed4'])
 	realize(Add_user['fed5'])
+
+	sudo::add_user('fed5')
 }
 
 class user::virtual {
