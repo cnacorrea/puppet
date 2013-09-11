@@ -47,7 +47,7 @@ define add_user($name, $shell, $sshkeytype, $sshkey, $team) {
 		comment => "$name",
 		home    => "/home/$username",
 		shell   => "$shell",
-		tag     => "$tag",
+		tag     => "$team",
 	}
 
 	file { "/home/${username}":
@@ -56,7 +56,7 @@ define add_user($name, $shell, $sshkeytype, $sshkey, $team) {
 		owner   => $username,
 		group   => $username,
 		recurse => false,
-		tag     => "$tag",
+		tag     => "$team",
 	}
 
 	file { "/home/${username}/.ssh":
@@ -65,7 +65,7 @@ define add_user($name, $shell, $sshkeytype, $sshkey, $team) {
 		owner   => $username,
 		group   => $username,
 		recurse => true,
-		tag     => "$tag",
+		tag     => "$team",
 	}
 
 	if $sshkeytype != 'none' {
