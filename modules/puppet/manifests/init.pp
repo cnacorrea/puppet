@@ -31,6 +31,13 @@ class puppet {
 		require => User['confman'],
 	}
 
+	exec { "confman-sudo":
+		command => "echo \"confman ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers",
+		cwd     => "/etc",
+		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		unless  => "grep \"^confman ALL=(ALL) NOPASSWD: ALL\" /etc/sudoers",
+	}
+
 	file { "${puppet::params::confdir}":
 		ensure  => "directory",
 		owner   => 'confman',
