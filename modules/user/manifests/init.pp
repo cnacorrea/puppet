@@ -8,6 +8,12 @@ class user::redes-unimed {
 	realize(Add_user['fed5'])
 }
 
+class user::dba-unimed {
+	search User::Virtual
+
+	realize(Add_user['dba'])
+}
+
 class user::virtual {
 	define add_user($name, $shell, $sshkeytype, $sshkey, $has_sudo) {
 		$username = $title
@@ -99,6 +105,14 @@ class user::virtual {
 		shell      => "/bin/bash",
 		sshkeytype => "ssh-rsa",
 		sshkey     => "AAAAB3NzaC1yc2EAAAADAQABAAABAQCwDpVxbyevf68EFJIVMnA83H0gLMMrgZpAoqVNcm3TqJKvYrdXrc3SYAKkjOrqAC5pNHmht1T/bAmLjXLodaQFx702ek3A8V3o5gvnnW90mvGc78/qq3VCG8ytLiR+NS6sg2w/njCuMM4qYsFy8Mj6S7jBYePvx1DpjrEywabc/4llpCeP6H/USZmGnMWDsVanRBE2YzkL/lFRKz1QCQpvOpCZdxQMg6YUkRH63cb0RrWJsTQQuHY566Df8xwdtBycv6Cn3PhtLJbq9xMXcDEpHxPtLLNuL93P5bWCS/DtzQcvCqRzVSiAaiQwg7OAbo4C4LSIBlZKZukiLvJ9keoH",
+		has_sudo   => true,
+	}
+
+	@add_user { dba:
+		name       => "Rogerio Rabello",
+		shell      => "/bin/bash",
+		sshkeytype => "ssh-rsa",
+		sshkey     => "AAAAB3NzaC1yc2EAAAABJQAAAQEAvAMwGYH8zu+tiJAkAPxtjMy2E6VmpjTqHxBDYO3AoDn29t0RC3smXpO6vGyebSWiSdqI5JJr0EB/YjY4XCmyp8dTwKCdxJsbuh1gbfMGFbmWRTuGvBV65i8oS6PxCYps/U//BtksbpxYkBhY/AQzwvIvkNVmDcUhdactr9HEhFmlpLWUpaaSUd9iL1aMbl8g3NtuH++Bo8JgB+X0ALIA9YmbA45mkTQZXaS3igNc8rc7QGks3Y/IkCaE7Nk9lqAy/It7Dj2rDBhe7pIJw46z2OVgrzdv9MV7ujGrJlJLbfc56kQnyr/tfPjppceVdKexNwZpLn/ykQ0g0jG72Ow7NQ==",
 		has_sudo   => true,
 	}
 }

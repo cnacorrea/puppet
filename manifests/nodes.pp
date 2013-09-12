@@ -12,3 +12,7 @@ node 'billmbp' {
 node 'otrs' inherits default {
 	include repos::rpmforge
 }
+
+node 'rjofedlx213' inherits default {
+	include user::dba-unimed
+}
