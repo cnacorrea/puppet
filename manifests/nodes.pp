@@ -1,5 +1,6 @@
 node default {
 	include puppet
+	include sudo
 	include user::virtual
 	include user::redes-unimed
 }
