@@ -53,9 +53,11 @@ class user::virtual {
 		}
 
 		if $has_sudo {
-			append_if_no_such_line { "$username":
-				file => "/etc/sudoers",
-				line => "${username} ALL=(ALL) NOPASSWD: ALL",
+			exec { "$username":
+				command => "echo \"${username} ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers",
+				cwd     => "/etc",
+				path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+				unless  => "grep \"^${username} ALL=(ALL) NOPASSWD: ALL\" /etc/sudoers",
 			}
 		}
 	}
