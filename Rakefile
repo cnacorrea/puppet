@@ -47,7 +47,7 @@ task :el5strap do
 	client = ENV['CLIENT']
 	commands = <<BOOTSTRAP
 sudo rpm -Uvh --force --nodeps http://yum.puppetlabs.com/el/5/products/i386/puppetlabs-release-5-7.noarch.rpm && \
-sudo rpm -Uvh --force --nodeps http://download.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm && \ 
+sudo rpm -Uvh --force --nodeps http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm && \ 
 sudo yum -y --skip-broken update && sudo yum -y install git puppet && \
 mkdir -p ~/.ssh && \
 echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
