@@ -22,6 +22,11 @@ class user::virtual {
 			comment => "$name",
 			home    => "/home/$username",
 			shell   => "$shell",
+			group   => "$username",
+		}
+
+		group { $username:
+			ensure  => present,
 		}
 
 		file { "/home/${username}":
