@@ -40,3 +40,6 @@ node rjofedlx219 inherits unimed-banco {
 
 node rjodmzlx003 inherits unimed-banco {
 }
+
+node 'unicoo.angra.unimed.com.br' inherits unimed-banco {
+}
