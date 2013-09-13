@@ -43,3 +43,6 @@ node rjodmzlx003 inherits unimed-banco {
 
 node 'unicoo.angra.unimed.com.br' inherits unimed-banco {
 }
+
+node 'bpilnx010' inherits unimed-banco {
+}
