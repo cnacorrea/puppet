@@ -37,3 +37,6 @@ node rjolnx008 inherits unimed-banco {
 
 node rjofedlx219 inherits unimed-banco {
 }
+
+node rjodmzlx003 inherits unimed-banco {
+}
