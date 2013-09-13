@@ -22,7 +22,7 @@ class user::virtual {
 			comment => "$name",
 			home    => "/home/$username",
 			shell   => "$shell",
-			group   => "$username",
+			gid     => "$username",
 		}
 
 		group { $username:
