@@ -48,7 +48,7 @@ task :el5strap do
 	commands = <<BOOTSTRAP
 sudo rpm -Uvh --force --nodeps http://yum.puppetlabs.com/el/5/products/i386/puppetlabs-release-5-7.noarch.rpm && \
 sudo rpm -Uvh --force --nodeps http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm && \ 
-sudo yum -y --skip-broken update && sudo yum -y install git puppet && \
+sudo yum --skip-broken -y update && sudo yum -y install git puppet && \
 mkdir -p ~/.ssh && \
 echo \"Host github.com\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config && \
 chmod 0600 ~/.ssh/config && \

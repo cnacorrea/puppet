@@ -56,3 +56,7 @@ node 'homologa.barrapirai.unimed.com.br' inherits unimed-banco {
 # 052 201
 node 'bmalnx08.barramansa.unimed.com.br' inherits unimed-banco {
 }
+
+# 231 200
+node 'unicoo.costaverde.unimed.com.br' inherits unimed-banco {
+}
