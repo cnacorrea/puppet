@@ -41,11 +41,18 @@ node rjofedlx219 inherits unimed-banco {
 node rjodmzlx003 inherits unimed-banco {
 }
 
+# 341 200
 node 'unicoo.angra.unimed.com.br' inherits unimed-banco {
 }
 
+# 248 200
 node 'bpilnx010' inherits unimed-banco {
 }
 
+# 248 201
 node 'homologa.barrapirai.unimed.com.br' inherits unimed-banco {
+}
+
+# 052 201
+node 'bmalnx08.barramansa.unimed.com.br' inherits unimed-banco {
 }
