@@ -64,3 +64,7 @@ node 'unicoo.costaverde.unimed.com.br' inherits unimed-banco {
 # 023 200
 node 'oralnx001.novaiguacu.unimed.com.br' inherits unimed-banco {
 }
+
+# 077 200
+node 'unicoo.itaperuna.unimed.com.br' inherits unimed-banco {
+}
