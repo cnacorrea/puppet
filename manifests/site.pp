@@ -60,3 +60,7 @@ node 'bmalnx08.barramansa.unimed.com.br' inherits unimed-banco {
 # 231 200
 node 'unicoo.costaverde.unimed.com.br' inherits unimed-banco {
 }
+
+# 023 200
+node 'oralnx001.novaiguacu.unimed.com.br' inherits unimed-banco {
+}
