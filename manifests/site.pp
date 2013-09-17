@@ -76,3 +76,7 @@ node 'oralnx001.novaiguacu.unimed.com.br' inherits unimed-banco {
 # 077 200
 node 'unicoo.itaperuna.unimed.com.br' inherits unimed-banco {
 }
+
+# 296 200
+node 'producao.mvalenca.unimed.com.br' inherits unimed-banco {
+}
