@@ -53,6 +53,10 @@ node 'bpilnx010' inherits unimed-banco {
 node 'homologa.barrapirai.unimed.com.br' inherits unimed-banco {
 }
 
+# 052 200
+node 'bmalnx004.barramansa.unimed.com.br' inherits unimed-banco {
+}
+
 # 052 201
 node 'bmalnx08.barramansa.unimed.com.br' inherits unimed-banco {
 }
