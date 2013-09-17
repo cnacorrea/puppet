@@ -84,3 +84,7 @@ node 'producao.mvalenca.unimed.com.br' inherits unimed-banco {
 # 126 200
 node 'unicoo.noroesterj.unimed.com.br' inherits unimed-banco {
 }
+
+# 126 201
+node 'homologa.noroesterj.unimed.coop.br' inherits unimed-banco {
+}
