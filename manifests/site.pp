@@ -80,3 +80,7 @@ node 'unicoo.itaperuna.unimed.com.br' inherits unimed-banco {
 # 296 200
 node 'producao.mvalenca.unimed.com.br' inherits unimed-banco {
 }
+
+# 126 200
+node 'unicoo.noroesterj.unimed.com.br' inherits unimed-banco {
+}
