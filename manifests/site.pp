@@ -31,6 +31,7 @@ node rjofedlx213 inherits unimed-banco {
 }
 
 node rjofedlx214 inherits unimed-banco {
+	include ntp
 }
 
 node rjofedlx215 inherits unimed-banco {
