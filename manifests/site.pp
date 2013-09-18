@@ -24,6 +24,9 @@ node 'otrs' inherits default {
 	include repos::rpmforge
 }
 
+node rjolnx008 inherits unimed-banco {
+}
+
 node rjofedlx212 inherits unimed-banco {
 }
 
@@ -37,10 +40,11 @@ node rjofedlx214 inherits unimed-banco {
 node rjofedlx215 inherits unimed-banco {
 }
 
-node rjolnx008 inherits unimed-banco {
+node rjofedlx219 inherits unimed-banco {
 }
 
-node rjofedlx219 inherits unimed-banco {
+node rjofedlx225 inherits default {
+	include ntp
 }
 
 node rjodmzlx003 inherits unimed-banco {
