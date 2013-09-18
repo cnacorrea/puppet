@@ -96,3 +96,7 @@ node 'unicoo.noroesterj.unimed.com.br' inherits unimed-banco {
 # 126 201
 node 'homologa.noroesterj.unimed.coop.br' inherits unimed-banco {
 }
+
+# 205 200
+node 'oracle.campos.unimed.com.br' inherits unimed-banco {
+}
