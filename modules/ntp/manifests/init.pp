@@ -36,6 +36,15 @@ class ntp::config {
 		require => Class["ntp::install"],
 		notify => Class["ntp::service"],
 	}
+
+	file { '/etc/localtime':
+		ensure => present,
+		owner => 'root',
+		group => 'root',
+		mode => 0644,
+		source => [ "puppet:///modules/ntp/localtime_${::timezone}" ],
+		notify => Class["ntp::service"],
+	}
 }
 
 class ntp::service {
