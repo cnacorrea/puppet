@@ -46,7 +46,7 @@ class ntp::config {
 		notify => Class["ntp::service"],
 		replace => $timezone ? {
 			'BRT' => true,
-			default => false
+			default => false,
 		},
 	}
 }
