@@ -3,6 +3,10 @@ node default {
 	include sudo
 }
 
+node ubuntuvm inherits default {
+	include ntp
+}
+
 node unimed inherits default {
 	include user::virtual
 	include user::redes-unimed
