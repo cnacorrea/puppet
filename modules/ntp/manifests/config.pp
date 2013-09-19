@@ -30,7 +30,7 @@ class ntp::config {
 	if $::osfamily == 'RedHat' {
 		augeas { 'ntp-options':
 			context => '/files/etc/sysconfig/ntpd',
-			changes => 'set OPTIONS \"-u ntp:ntp -p /var/run/ntpd.pid -g\"',
+			changes => 'set OPTIONS \'"-u ntp:ntp -p /var/run/ntpd.pid -g"\'',
 			notify  => Class["ntp::service"],
 		}
 	}
