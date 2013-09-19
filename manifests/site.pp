@@ -29,6 +29,7 @@ node rjolnx008 inherits unimed-banco {
 
 node rjofedlx212 inherits unimed-banco {
 	include jdk160_18
+	include jboss711
 }
 
 node rjofedlx213 inherits unimed-banco {
