@@ -7,7 +7,7 @@ class ntp::params {
 		}
 		RedHat: {
 			$ntp_package_name = 'ntp'
-			$ntp_config_file = '/etc/ntpd.conf'
+			$ntp_config_file = '/etc/ntp.conf'
 			$ntp_service_name = 'ntpd'
 		}
 		default: {
