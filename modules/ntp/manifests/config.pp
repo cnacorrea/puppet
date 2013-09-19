@@ -18,4 +18,12 @@ class ntp::config {
 		notify  => Class["ntp::service"],
 		replace => $ntp::params::ntp_localtime_replace,
 	}
+
+	file { '/var/lib/ntpstats':
+		ensure => directory,
+		owner  => 'ntp',
+		group  => 'ntp',
+		mode   => 0750,
+		notify => Class["ntp::service"],
+	}
 }
