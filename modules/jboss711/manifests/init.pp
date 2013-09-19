@@ -15,6 +15,15 @@ class jboss711 {
 		require => Exec["install-jboss711"],
 	}
 
+	file { "/opt/jboss-as-7.1.1.Final":
+		ensure  => present,
+		source  => "puppet:///modules/jboss711/standalone.conf",
+		owner   => 'root',
+		group   => 'root',
+		mode    => 0644,
+		require => Exec["install-jboss711"],
+	}
+
 	exec { "rm-jboss711-zip":
 		command     => 'rm -f /opt/jboss-as-7.1.1.Final.zip',
 		cwd         => "/opt",
