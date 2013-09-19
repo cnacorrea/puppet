@@ -2,7 +2,7 @@ class ntp {
 	if $::virtual == physical {
 		include ntp::params, ntp::install, ntp::config, ntp::service
 	} else {
-		warning("Tried to enable ntp on a ${::virtual} virtual machine. For the sake of reliability, I'm DISABLING it. Please, check ${::virtual} good practices for timekeeping.")
+		warning("Tried to enable ntp on a ${::virtual} virtual machine. For the sake of reliability, I'm DISABLING it. Please, check ${::virtual} best practices for timekeeping.")
 
 		include ntp::params
 
