@@ -21,7 +21,7 @@ class jdk160_18 {
 				source => 'puppet:///modules/jdk160_18/jdk160_18.sh',
 				owner  => 'root',
 				group  => 'root',
-				mode   => '0755',
+				mode   => '0644',
 			}
 		}
 		default: {
