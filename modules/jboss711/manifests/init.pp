@@ -24,6 +24,16 @@ class jboss711 {
 		require => Exec["install-jboss711"],
 	}
 
+	file { "/opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml":
+		ensure  => present,
+		replace => false,
+		source  => "puppet:///modules/jboss711/standalone.xml",
+		owner   => 'root',
+		group   => 'root',
+		mode    => 0644,
+		require => Exec["install-jboss711"],
+	}
+
 	exec { "rm-standalone-xml":
 		command     => 'rm -f /opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml',
 		cwd         => "/opt",
