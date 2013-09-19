@@ -1,10 +1,10 @@
 node default {
 	include puppet
 	include sudo
+	include ntp
 }
 
 node ubuntuvm inherits default {
-	include ntp
 }
 
 node unimed inherits default {
@@ -34,17 +34,12 @@ node rjofedlx213 inherits unimed-banco {
 }
 
 node rjofedlx214 inherits unimed-banco {
-	include ntp
 }
 
 node rjofedlx215 inherits unimed-banco {
 }
 
 node rjofedlx219 inherits unimed-banco {
-}
-
-node rjofedlx225 inherits default {
-	include ntp
 }
 
 node rjodmzlx003 inherits unimed-banco {
