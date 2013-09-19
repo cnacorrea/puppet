@@ -15,7 +15,7 @@ class jboss711 {
 		require => Exec["install-jboss711"],
 	}
 
-	file { "/opt/jboss-as-7.1.1.Final":
+	file { "/opt/jboss-as-7.1.1.Final/bin/standalone.conf":
 		ensure  => present,
 		source  => "puppet:///modules/jboss711/standalone.conf",
 		owner   => 'root',
