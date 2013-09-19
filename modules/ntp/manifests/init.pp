@@ -42,8 +42,12 @@ class ntp::config {
 		owner => 'root',
 		group => 'root',
 		mode => 0644,
-		source => [ "puppet:///modules/ntp/localtime_${::timezone}" ],
+		source => "puppet:///modules/ntp/localtime",
 		notify => Class["ntp::service"],
+		replace => $timezone ? {
+			'BRT' => true,
+			default => false
+		},
 	}
 }
 
