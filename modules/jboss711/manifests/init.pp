@@ -8,10 +8,11 @@ class jboss711 {
 	}
 
 	file { "/opt/jboss":
-		ensure => link,
-		target => '/opt/jboss-as-7.1.1.Final',
-		owner  => 'root',
-		group  => 'root',
+		ensure  => link,
+		target  => '/opt/jboss-as-7.1.1.Final',
+		owner   => 'root',
+		group   => 'root',
+		require => Exec["install-jboss711"],
 	}
 
 	exec { "rm-jboss711-zip":
