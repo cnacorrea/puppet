@@ -54,7 +54,7 @@ class jboss711 {
 	}
 
 	exec { "create-jboss-password":
-		command     => '/usr/local/sbin/create_jboss_password.sh fed5',
+		command     => 'su - -c "/usr/local/sbin/create_jboss_password.sh fed5"',
 		cwd         => '/opt',
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		require     => File["/usr/local/sbin/create_jboss_password.sh"],

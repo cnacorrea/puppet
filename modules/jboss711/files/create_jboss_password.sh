@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source /etc/profile
-
 USER="javamgmt"
 PASS=`/usr/local/sbin/generate_crypt_string.sh`
 MAIL="$1"
