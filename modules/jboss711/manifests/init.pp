@@ -1,12 +1,36 @@
 class jboss711 (
-	$contact = "suporte@unimedrj.coop.br",
+	$email_contact = $jboss711::params::default_email_contact,
 ) {
+	include jboss711::install, jboss711::service
+}
+
+class jboss711::install {
+	group { "jboss-as":
+		ensure => present,
+	}
+
+	user { "jboss-as":
+		gid     => "jboss-as",
+		shell   => "/sbin/nologin",
+		comment => "JBoss Management Account",
+		home    => "/opt/jboss",
+		require => Group["jboss-as"],
+	}
+
 	exec { "install-jboss711":
-		command => 'wget -O /opt/jboss-as-7.1.1.Final.zip http://cnacorrea.it/software/jboss-as-7.1.1.Final.zip && unzip jboss-as-7.1.1.Final.zip',
+		command => 'wget -O /opt/jboss-as-7.1.1.Final.zip http://cnacorrea.it/software/jboss-as-7.1.1.Final.zip && unzip jboss-as-7.1.1.Final.zip && chown -R jboss-as:jboss-as jboss-as-7.1.1.Final && chmod -R o-rwx jboss-as-7.1.1.Final',
 		cwd	=> "/opt",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		notify  => [ Exec["rm-jboss711-zip"], Exec["rm-standalone-xml"], Exec["create-jboss-password"] ],
 		creates => "/opt/jboss-as-7.1.1.Final",
+		require => User["jboss-as"],
+	}
+
+	exec { "rm-jboss711-zip":
+		command     => 'rm -f /opt/jboss-as-7.1.1.Final.zip',
+		cwd         => "/opt",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		refreshonly => true,
 	}
 
 	file { "/opt/jboss":
@@ -24,6 +48,13 @@ class jboss711 (
 		group   => 'root',
 		mode    => 0644,
 		require => Exec["install-jboss711"],
+	}
+
+	exec { "rm-standalone-xml":
+		command     => 'rm -f /opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml',
+		cwd         => "/opt",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		refreshonly => true,
 	}
 
 	file { "/opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml":
@@ -63,17 +94,11 @@ class jboss711 (
 		refreshonly => true,
 	}
 
-	exec { "rm-standalone-xml":
-		command     => 'rm -f /opt/jboss-as-7.1.1.Final/standalone/configuration/standalone.xml',
-		cwd         => "/opt",
-		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
-		refreshonly => true,
-	}
-
-	exec { "rm-jboss711-zip":
-		command     => 'rm -f /opt/jboss-as-7.1.1.Final.zip',
-		cwd         => "/opt",
-		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
-		refreshonly => true,
+	file { "/etc/jboss-as":
+		ensure  => directory,
+		owner   => 'jboss-as',
+		group   => 'jboss-as',
+		mode    => 0700,
+		require => User["jboss-as"],
 	}
 }
