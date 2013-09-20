@@ -120,4 +120,12 @@ class user::virtual {
 		sshkey     => "AAAAB3NzaC1yc2EAAAABJQAAAQEAvAMwGYH8zu+tiJAkAPxtjMy2E6VmpjTqHxBDYO3AoDn29t0RC3smXpO6vGyebSWiSdqI5JJr0EB/YjY4XCmyp8dTwKCdxJsbuh1gbfMGFbmWRTuGvBV65i8oS6PxCYps/U//BtksbpxYkBhY/AQzwvIvkNVmDcUhdactr9HEhFmlpLWUpaaSUd9iL1aMbl8g3NtuH++Bo8JgB+X0ALIA9YmbA45mkTQZXaS3igNc8rc7QGks3Y/IkCaE7Nk9lqAy/It7Dj2rDBhe7pIJw46z2OVgrzdv9MV7ujGrJlJLbfc56kQnyr/tfPjppceVdKexNwZpLn/ykQ0g0jG72Ow7NQ==",
 		has_sudo   => true,
 	}
+
+	file { "/usr/local/sbin/generate_crypt_string.sh":
+		ensure => present,
+		source => "puppet:///modules/user/generate_crypt_string.sh",
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0755,
+	}
 }
