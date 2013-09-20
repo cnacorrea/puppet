@@ -44,7 +44,7 @@ class jboss711::install(
 		group   => 'root',
 		mode    => 0644,
 		require => Exec["install-jboss711"],
-		notify  => Class["jboss::service"],
+		notify  => Class["jboss711::service"],
 	}
 
 	exec { "rm-standalone-xml":
