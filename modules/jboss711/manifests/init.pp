@@ -101,4 +101,29 @@ class jboss711::install {
 		mode    => 0700,
 		require => User["jboss-as"],
 	}
+
+	file { "/var/run/jboss-as":
+		ensure  => directory,
+		owner   => 'jboss-as',
+		group   => 'jboss-as',
+		mode    => 0750,
+		require => User["jboss-as"],
+	}
+
+	file { "/etc/jboss-as/jboss-as.conf":
+		ensure  => present,
+		source  => "puppet:///modules/jboss711/jboss-as.conf",
+		owner   => 'jboss-as',
+		group   => 'jboss-as',
+		mode    => 0640,
+		require => File["/etc/jboss-as"],
+	}
+
+	file { "/etc/init.d/jboss-as-standalone":
+		ensure  => present,
+		source  => "puppet:///modules/jboss711/jboss-as-standalone",
+		owner   => 'root',
+		group   => 'root',
+		mode    => 0750,
+	}
 }
