@@ -136,7 +136,7 @@ class jboss711::install {
 		notify => Exec["jboss711-svc-add"],
 	}
 
-	exec { "jboss-svc-add":
+	exec { "jboss711-svc-add":
 		command     => 'chkconfig --add jboss-as-standalone',
 		cwd         => "/opt",
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
