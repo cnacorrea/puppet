@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /etc/profile.d/java.sh
+source /etc/profile
 
 USER="javamgmt"
 PASS=`/usr/local/sbin/generate_crypt_string.sh`
