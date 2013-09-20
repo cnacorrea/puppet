@@ -31,7 +31,7 @@ node rjofedlx212 inherits unimed-banco {
 	include jdk160_18
 
 	class { "jboss711":
-		email_contact => "suporte@unimedrj.coop.br",
+		email_contact => "suportefabrica@unimedrj.coop.br",
 	}
 
 	include union
