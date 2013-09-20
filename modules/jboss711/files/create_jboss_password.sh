@@ -1,11 +1,13 @@
 #!/bin/bash
 
+source /etc/profile.d/java.sh
+
 USER="javamgmt"
 PASS=`/usr/local/sbin/generate_crypt_string.sh`
 MAIL="$1"
 
 cd /opt/jboss
-bin/add-user.sh --silent=true javamgmt $PASS &> /tmp/teste.log
+bin/add-user.sh --silent=true javamgmt $PASS
 
 mail -s "Your new JBoss admin credentials" $MAIL << EOF
 Dear JBoss user,
