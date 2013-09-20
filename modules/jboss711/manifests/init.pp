@@ -94,6 +94,14 @@ class jboss711::install {
 		refreshonly => true,
 	}
 
+	file { "/etc/profile.d/jboss711.sh":
+		ensure => present,
+		source => "puppet:///modules/jboss711/jboss711.sh",
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0644,
+	}
+
 	file { "/etc/jboss-as":
 		ensure  => directory,
 		owner   => 'jboss-as',
