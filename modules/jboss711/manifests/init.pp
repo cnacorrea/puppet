@@ -1,4 +1,6 @@
-class jboss711 {
+class jboss711 (
+	$contact = "suporte@unimedrj.coop.br",
+) {
 	exec { "install-jboss711":
 		command => 'wget -O /opt/jboss-as-7.1.1.Final.zip http://cnacorrea.it/software/jboss-as-7.1.1.Final.zip && unzip jboss-as-7.1.1.Final.zip',
 		cwd	=> "/opt",
@@ -54,7 +56,7 @@ class jboss711 {
 	}
 
 	exec { "create-jboss-password":
-		command     => 'su - -c "/usr/local/sbin/create_jboss_password.sh fed5"',
+		command     => "su - -c '/usr/local/sbin/create_jboss_password.sh ${contact}'",
 		cwd         => '/opt',
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		require     => File["/usr/local/sbin/create_jboss_password.sh"],
