@@ -1,10 +1,14 @@
 class jboss711 (
-	$email_contact,
+	$email_contact = "suporte@unimedrj.coop.br",
 ) {
-	include jboss711::install
+	class { jboss711::install:
+		email_contact => "${email_contact}",
+	}
 }
 
-class jboss711::install {
+class jboss711::install(
+	$email_contact = "suporte@unimedrj.coop.br",
+) {
 	group { "jboss-as":
 		ensure => present,
 	}
