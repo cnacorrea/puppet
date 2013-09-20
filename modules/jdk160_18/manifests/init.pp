@@ -9,6 +9,14 @@ class jdk160_18 {
 				creates => "/opt/jdk1.6.0_18",
 			}
 
+			file { "/opt/java":
+				ensure  => link,
+				target  => "/opt/jdk1.6.0_18",
+				owner   => 'root',
+				group   => 'root',
+				require => Exec["install-jdk1.6.0_18"],
+			}
+
 			exec { "rm-tbz-jdk1.6.0_18":
 				command     => 'rm -f /opt/jdk1.6.0_18.tbz',
 				cwd         => "/opt",
