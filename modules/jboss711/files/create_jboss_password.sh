@@ -4,8 +4,16 @@ USER="javamgmt"
 PASS=`/usr/local/sbin/generate_crypt_string.sh`
 MAIL="$1"
 
+TEMP=`mktemp /tmp/jboss.XXXXXX`
+
 cd /opt/jboss
-bin/add-user.sh --silent=true javamgmt $PASS &> /tmp/teste.log
+grep -v "^javamgmt=" standalone/configuration/mgmt-users.properties > $TEMP
+cp -f $TEMP standalone/configuration/mgmt-users.properties
+grep -v "^javamgmt=" domain/configuration/mgmt-users.properties > $TEMP
+cp -f $TEMP domain/configuration/mgmt-users.properties
+rm -f $TEMP
+
+bin/add-user.sh --silent=true javamgmt $PASS
 
 mail -s "Your new JBoss admin credentials" $MAIL << EOF
 Dear JBoss user,
