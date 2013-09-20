@@ -1,7 +1,7 @@
 class jboss711 (
 	$email_contact = $jboss711::params::default_email_contact,
 ) {
-	include jboss711::install, jboss711::service
+	include jboss711::install
 }
 
 class jboss711::install {
