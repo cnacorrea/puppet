@@ -128,10 +128,18 @@ class jboss711::install {
 	}
 
 	file { "/etc/init.d/jboss-as-standalone":
-		ensure  => present,
-		source  => "puppet:///modules/jboss711/jboss-as-standalone",
-		owner   => 'root',
-		group   => 'root',
-		mode    => 0750,
+		ensure => present,
+		source => "puppet:///modules/jboss711/jboss-as-standalone",
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0750,
+		notify => Exec["jboss711-svc-add"],
+	}
+
+	exec { "jboss-svc-add":
+		command     => 'chkconfig --add jboss-as-standalone',
+		cwd         => "/opt",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		refreshonly => true,
 	}
 }
