@@ -62,7 +62,7 @@ class jboss711::install(
 		group   => 'root',
 		mode    => 0644,
 		require => Exec["install-jboss711"],
-		notify  => Class["jboss::service"],
+		notify  => Class["jboss711::service"],
 	}
 
 	file { "/usr/local/sbin/create_jboss_password.sh":
@@ -123,7 +123,7 @@ class jboss711::install(
 		group   => 'jboss-as',
 		mode    => 0640,
 		require => File["/etc/jboss-as"],
-		notify  => Class["jboss::service"],
+		notify  => Class["jboss711::service"],
 	}
 
 	file { "/etc/init.d/jboss-as-standalone":
