@@ -87,7 +87,7 @@ class jboss711::install {
 	}
 
 	exec { "create-jboss-password":
-		command     => "su - -c '/usr/local/sbin/create_jboss_password.sh ${contact}'",
+		command     => "su - -c '/usr/local/sbin/create_jboss_password.sh ${email_contact}'",
 		cwd         => '/opt',
 		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		require     => File["/usr/local/sbin/create_jboss_password.sh"],
