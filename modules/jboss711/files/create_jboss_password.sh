@@ -23,6 +23,8 @@ A new administrative account was provisioned for you to manage your JBoss instal
 Username: javamgmt
 Password: $PASS
 
+The console management URL for this install is probably http://`hostname`:9990/.
+
 Regards,
 Your Support Team.
 EOF
