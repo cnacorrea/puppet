@@ -29,7 +29,11 @@ node rjolnx008 inherits unimed-banco {
 
 node rjofedlx212 inherits unimed-banco {
 	include jdk160_18
-	include jboss711
+
+	class { "jboss711":
+		contact => "suporte@unimedrj.coop.br",
+	}
+
 	include union
 }
 
