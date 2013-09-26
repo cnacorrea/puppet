@@ -13,7 +13,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::config { "${app-name}_config":
+	rubyapp::config { "${app_name}_config":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -21,7 +21,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::service { "${app-name}_service":
+	rubyapp::service { "${app_name}_service":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
