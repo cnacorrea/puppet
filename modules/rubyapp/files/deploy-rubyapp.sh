@@ -14,7 +14,7 @@ if [ -d $1/$2 ]; then
 	su - deploy -c "( cd $1 ; cp -Ravp $2.`date +%Y%m%d%H%M`/config/email.yml $2/config/ )"
 	su - deploy -c "( cd $1 ; cp -Ravp $2.`date +%Y%m%d%H%M`/config/config.yml $2/config/ )"
 	su - deploy -c "( cd $1 ; cp -Ravp $2.`date +%Y%m%d%H%M`/tmp/pids/*.pid $2/tmp/pids/ )"
-	su - deploy -c "( cd $1 ; tar czvf $2.`date +%Y%m%d%H%M`.tar.gz $2.`date +%Y%m%d` )"
+	su - deploy -c "( cd $1 ; tar czvf $2.`date +%Y%m%d%H%M`.tar.gz $2.`date +%Y%m%d%H%M` )"
 	su - deploy -c "( cd $1 ; rm -rf $2.`date +%Y%m%d%H%M` )"
 else
 	su - deploy -c "( cd $1 ; git clone -b `cat /usr/local/etc/$2.version` $3 $2 )"
