@@ -2,14 +2,14 @@ define rubyapp::deploy (
 	$app_name = "pacuti",
 	$app_domain = "unimedrj.com.br",
 	$app_dir = "/var/www",
-	$app_port = "3006",
+	$app_port = 3000,
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
 	rubyapp::install { "${app_name}_install":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
-		app_port   => "${app_port}",
+		app_port   => $app_port,
 		repository => "${repository}",
 	}
 
@@ -17,7 +17,7 @@ define rubyapp::deploy (
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
-		app_port   => "${app_port}",
+		app_port   => $app_port,
 		repository => "${repository}",
 	}
 
@@ -25,7 +25,7 @@ define rubyapp::deploy (
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
-		app_port   => "${app_port}",
+		app_port   => $app_port,
 		repository => "${repository}",
 	}
 }
@@ -34,7 +34,7 @@ define rubyapp::install (
 	$app_name = "pacuti",
 	$app_domain = "unimedrj.com.br",
 	$app_dir = "/var/www",
-	$app_port = "3000",
+	$app_port = 3000,
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
 	file { "${app_name}_start":
@@ -91,7 +91,7 @@ define rubyapp::config (
 	$app_name = "pacuti",
 	$app_domain = "unimedrj.com.br",
 	$app_dir = "/var/www",
-	$app_port = "3000",
+	$app_port = 3000,
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
 	file { "${app_name}_version":
@@ -117,7 +117,7 @@ define rubyapp::service (
 	$app_name = "pacuti",
 	$app_domain = "unimedrj.com.br",
 	$app_dir = "/var/www",
-	$app_port = "3000",
+	$app_port = 3000,
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
 	service  { "${app_name}":
