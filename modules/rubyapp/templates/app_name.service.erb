@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# Service script for <%= @app_name %> application
+#
+# chkconfig: 2345 86 14
+# description: Service script for <%= @app_name %> application
+#
+
+start() {
+	echo "Starting <%= @app_name %>"
+	/usr/local/sbin/start-rubyapp.<%= @app_name %>.sh ${app_dir} <%= @app_name %>.<%= @app_domain %> <%= @app_port %>
+}
+
+stop() {
+	echo "Stopping <%= @app_name %>"
+	/usr/local/sbin/stop-rubyapp.<%= @app_name %>.sh ${app_dir} <%= @app_name %>.<%= @app_domain %> <%= @app_port %>
+}
+
+restart(){
+        stop
+        sleep 60
+        start
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+esac
+
+exit 0
