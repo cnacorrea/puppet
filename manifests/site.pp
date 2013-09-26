@@ -43,7 +43,7 @@ node rjofedlx213 inherits unimed-banco {
 		app_domain => "z.unimedrj.com.br",
 		app_dir    => "/var/www",
 		app_port   => 3004,
-		repository => "git@git.unimedrj.com.br:trabalheconosco.git",
+		repository => "git@git.unimedrj.com.br/trabalheconosco/trabalheconosco.git",
 	}
 }
 
