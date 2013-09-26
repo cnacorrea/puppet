@@ -5,7 +5,7 @@ define rubyapp::deploy (
 	$app_port = "3006",
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
-	rubyapp::install { "${app_name}-install":
+	rubyapp::install { "${app_name}.install":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -13,7 +13,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::config { "${app-name}-config":
+	rubyapp::config { "${app-name}.config":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -21,7 +21,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::service { "${app-name}-service":
+	rubyapp::service { "${app-name}.service":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
