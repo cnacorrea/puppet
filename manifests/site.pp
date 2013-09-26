@@ -45,6 +45,14 @@ node rjofedlx213 inherits unimed-banco {
 		app_port   => 3004,
 		repository => "git://git.unimedrj.com.br/trabalheconosco/trabalheconosco.git",
 	}
+
+	rubyapp::deploy { "pacuti":
+		app_name   => "pacuti",
+		app_domain => "h.unimedrj.com.br",
+		app_dir    => "/var/www",
+		app_port   => 3006,
+		repository => "git@git.unimedrj.com.br:pacuti/pacuti.git",
+	}
 }
 
 node rjofedlx214 inherits unimed-banco {
