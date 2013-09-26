@@ -105,7 +105,7 @@ define rubyapp::config (
 	}
 
 	exec { "${app_name}_apply":
-		command => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository}",
+		command => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository} &>/var/log/deploy",
 		cwd     => "${app_dir}",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		refreshonly => true,

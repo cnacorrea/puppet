@@ -38,7 +38,7 @@ node rjofedlx212 inherits unimed-banco {
 }
 
 node rjofedlx213 inherits unimed-banco {
-	rubyapp::deploy { "pacuti":
+	rubyapp::deploy { "trabalheconosco":
 		app_name   => "trabalheconosco",
 		app_domain => "z.unimedrj.com.br",
 		app_dir    => "/var/www",
