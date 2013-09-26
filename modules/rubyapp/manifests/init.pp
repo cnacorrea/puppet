@@ -101,7 +101,7 @@ define rubyapp::config (
 		owner  => 'root',
 		group  => 'root',
 		mode   => 0644,
-		notify => rubyapp::config,
+		notify => Exec["${app_name}_apply"],
 	}
 
 	exec { "${app_name}_apply":
