@@ -15,3 +15,8 @@ if [ -d $1/$2 ]; then
 else
 	su - deploy -c "( cd $1 ; git clone -b `cat /usr/local/etc/$2.version` $3 $2 )"
 fi
+
+APP=`echo $2 | cut -f1 -d.`
+if [ -f /etc/init.d/$APP ]; then
+	service $APP restart
+fi

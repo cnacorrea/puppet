@@ -108,7 +108,6 @@ define rubyapp::config (
 		command => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository}",
 		cwd     => "${app_dir}",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
-		notify  => rubyapp::service,
 		refreshonly => true,
 	}
 }
