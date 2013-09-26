@@ -31,11 +31,11 @@ define rubyapp::deploy (
 }
 
 define rubyapp::install (
-	$app_name = "pacuti",
-	$app_domain = "unimedrj.com.br",
-	$app_dir = "/var/www",
-	$app_port = 3000,
-	$repository = "git@git.unimedrj.com.br:pacuti.git",
+	$app_name,
+	$app_domain,
+	$app_dir,
+	$app_port,
+	$repository,
 ) {
 	file { "${app_name}_start":
 		path   => "/usr/local/sbin/start-rubyapp.${app_name}.sh",
@@ -88,11 +88,11 @@ define rubyapp::install (
 }
 
 define rubyapp::config (
-	$app_name = "pacuti",
-	$app_domain = "unimedrj.com.br",
-	$app_dir = "/var/www",
-	$app_port = 3000,
-	$repository = "git@git.unimedrj.com.br:pacuti.git",
+	$app_name,
+	$app_domain,
+	$app_dir,
+	$app_port,
+	$repository,
 ) {
 	file { "${app_name}_version":
 		path   => "/usr/local/etc/${app_name}.${app_domain}.version",
@@ -113,11 +113,11 @@ define rubyapp::config (
 }
 
 define rubyapp::service (
-	$app_name = "pacuti",
-	$app_domain = "unimedrj.com.br",
-	$app_dir = "/var/www",
-	$app_port = 3000,
-	$repository = "git@git.unimedrj.com.br:pacuti.git",
+	$app_name,
+	$app_domain,
+	$app_dir,
+	$app_port,
+	$repository,
 ) {
 	service  { "${app_name}":
 		ensure     => running,
