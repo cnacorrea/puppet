@@ -4,5 +4,5 @@
 # $2 => application directory (appname.domain)
 # $3 => application port
 
-su - deploy -c "( cd ${1}.${2} ; bundle exec passenger stop -p ${3} )"
+su - deploy -c "( cd ${1}/${2} ; bundle exec passenger stop -p ${3} )"
 
