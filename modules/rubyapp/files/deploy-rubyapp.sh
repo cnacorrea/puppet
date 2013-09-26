@@ -4,6 +4,10 @@
 # $2 => application directory (appname.domain)
 # $3 => git repository for download
 
+echo $1
+echo $2
+echo $3
+
 if [ -d $1/$2 ]; then
 	su - deploy -c "( cd $1 ; mv $2 $2.`date +%Y%m%d` )"
 	su - deploy -c "( cd $1 ; git clone -b `cat /usr/local/etc/$2.version` $3 $2 )"
