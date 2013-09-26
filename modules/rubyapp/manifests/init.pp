@@ -5,7 +5,7 @@ define rubyapp::deploy (
 	$app_port = "3006",
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
-	rubyapp::install { "${app_name}.install":
+	rubyapp::install { "${app_name}_install":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -13,7 +13,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::config { "${app-name}.config":
+	rubyapp::config { "${app-name}_config":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -21,7 +21,7 @@ define rubyapp::deploy (
 		repository => "${repository}",
 	}
 
-	rubyapp::service { "${app-name}.service":
+	rubyapp::service { "${app-name}_service":
 		app_name   => "${app_name}",
 		app_domain => "${app_domain}",
 		app_dir    => "${app_dir}",
@@ -37,7 +37,7 @@ define rubyapp::install (
 	$app_port = "3000",
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
-	file { "${app_name}-start":
+	file { "${app_name}_start":
 		path   => "/usr/local/sbin/start-rubyapp.${app_name}.sh",
 		ensure => present,
 		source => [ "puppet:///modules/rubyapp/start-rubyapp.${app_name}.sh",
@@ -47,7 +47,7 @@ define rubyapp::install (
 		mode   => 0755,
 	}
 
-	file { "${app_name}-stop":
+	file { "${app_name}_stop":
 		path   => "/usr/local/sbin/stop-rubyapp.${app_name}.sh",
 		ensure => present,
 		source => [ "puppet:///modules/rubyapp/stop-rubyapp.${app_name}.sh",
@@ -57,7 +57,7 @@ define rubyapp::install (
 		mode   => 0755,
 	}
 
-	file { "${app_name}-maint":
+	file { "${app_name}_maint":
 		path   => "/usr/local/sbin/maint-rubyapp.${app_name}.sh",
 		ensure => present,
 		source => [ "puppet:///modules/rubyapp/maint-rubyapp.${app_name}.sh",
@@ -67,7 +67,7 @@ define rubyapp::install (
 		mode   => 0755,
 	}
 
-	file { "${app_name}-deploy":
+	file { "${app_name}_deploy":
 		path   => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh",
 		ensure => present,
 		source => [ "puppet:///modules/rubyapp/deploy-rubyapp.${app_name}.sh",
@@ -77,7 +77,7 @@ define rubyapp::install (
 		mode   => 0755,
 	}
 
-	file { "${app_name}-init":
+	file { "${app_name}_init":
 		path    => "/etc/init.d/${app_name}",
 		ensure  => present,
 		content => template("rubyapp/app_name.service.erb"),
@@ -94,7 +94,7 @@ define rubyapp::config (
 	$app_port = "3000",
 	$repository = "git@git.unimedrj.com.br:pacuti.git",
 ) {
-	file { "${app_name}-version":
+	file { "${app_name}_version":
 		path   => "/usr/local/etc/${app_name}.${app_domain}.version",
 		ensure => present,
 		source => "puppet:///modules/rubyapp/${app_name}.${app_domain}.version",
@@ -104,7 +104,7 @@ define rubyapp::config (
 		notify => rubyapp::config,
 	}
 
-	exec { "${app_name}-apply":
+	exec { "${app_name}_apply":
 		command => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository}",
 		cwd     => "${app_dir}",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
