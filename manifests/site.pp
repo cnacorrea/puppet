@@ -65,6 +65,13 @@ node rjofedlx219 inherits unimed-banco {
 }
 
 node rjodmzlx003 inherits unimed-banco {
+	rubyapp::deploy { "trabalheconosco":
+		app_name   => "trabalheconosco",
+		app_domain => "unimedrj.com.br",
+		app_dir    => "/var/www",
+		app_port   => 3004,
+		repository => "git://git.unimedrj.com.br/trabalheconosco/trabalheconosco.git",
+	}
 }
 
 # 341 200
