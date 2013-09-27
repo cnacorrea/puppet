@@ -1,3 +1,9 @@
+# this file actually contains a set of defines for the deployment of ruby applications
+# they break up the application deployment process in three steps:
+#
+#       base scripts install ===> git download & rake tasks ===> bundle start
+#
+# 
 define rubyapp::deploy (
 	$app_name = "pacuti",
 	$app_domain = "unimedrj.com.br",
