@@ -20,6 +20,6 @@ else
 	su - deploy -c "( cd $1 ; git clone -b `cat /usr/local/etc/$2.version` $3 $2 )"
 fi
 
-if [ -f /etc/init.d/$APP ]; then
-	service $APP start
-fi
+#if [ -f /etc/init.d/$APP ]; then
+#	service $APP start
+#fi

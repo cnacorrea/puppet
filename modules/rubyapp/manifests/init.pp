@@ -113,7 +113,7 @@ define rubyapp::config (
 	}
 
 	exec { "${app_name}_refresh":
-		command => "/usr/local/sbin/main-rubyapp.${app_name}.sh ${app_dir}/${app_name}.${app_domain} &>/var/log/maint",
+		command => "/usr/local/sbin/maint-rubyapp.${app_name}.sh ${app_dir}/${app_name}.${app_domain} &>/var/log/maint",
 		cwd     => "${app_dir}",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		refreshonly => true,
