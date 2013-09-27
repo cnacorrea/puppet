@@ -116,6 +116,7 @@ define rubyapp::config (
 		command => "/usr/local/sbin/maint-rubyapp.${app_name}.sh ${app_dir}/${app_name}.${app_domain} &>/var/log/maint",
 		cwd     => "${app_dir}",
 		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		timeout     => 0,
 		refreshonly => true,
 	}
 }
