@@ -130,7 +130,7 @@ define rubyapp::service (
 ) {
 	service  { "${app_name}":
 		ensure     => running,
-		hasstatus  => true,
+		hasstatus  => false,
 		hasrestart => true,
 		enable     => true,
 	}	
