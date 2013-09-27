@@ -105,17 +105,27 @@ define rubyapp::config (
 	}
 
 	exec { "${app_name}_apply":
-		command => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository} &>/var/log/deploy",
-		cwd     => "${app_dir}",
-		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		command     => "/usr/local/sbin/deploy-rubyapp.${app_name}.sh ${app_dir} ${app_name}.${app_domain} ${repository} &>/var/log/deploy.${app_name}",
+		cwd         => "${app_dir}",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		timeout     => 0,
 		refreshonly => true,
-		notify => Exec["${app_name}_refresh"],
+		notify      => Exec["${app_name}_refresh"],
 	}
 
 	exec { "${app_name}_refresh":
-		command => "/usr/local/sbin/maint-rubyapp.${app_name}.sh ${app_dir}/${app_name}.${app_domain} &>/var/log/maint",
-		cwd     => "${app_dir}",
-		path    => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		command     => "/usr/local/sbin/maint-rubyapp.${app_name}.sh ${app_dir}/${app_name}.${app_domain} &>/var/log/maint.${app_name}",
+		cwd         => "${app_dir}",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
+		timeout     => 0,
+		refreshonly => true,
+		notify      => Exec["${app_name}_restart"],
+	}
+
+	exec { "${app_name}_restart":
+		command     => "/etc/init.d/${app_name} start &>/var/log/start.${app_name}",
+		cwd         => "${app_dir}",
+		path        => [ "/bin", "/sbin", "/usr/bin", "/usr/sbin" ],
 		timeout     => 0,
 		refreshonly => true,
 	}
