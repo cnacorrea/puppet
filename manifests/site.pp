@@ -27,6 +27,13 @@ node 'billmbp' {
 
 # 972 unicoo
 node rjolnx008 inherits unimed-database {
+	include jdk160_18
+
+	class { "jboss711":
+		email_contact => "suportefabrica@unimedrj.coop.br",
+	}
+
+	include union
 }
 
 # 972 app.d
